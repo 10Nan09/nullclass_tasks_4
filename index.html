@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Market Insights Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eaf0f6; /* Mild professional background */
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1f77b4, #3ca0f0);
+      color: #fff;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #e0e0e0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .tableauContainer {
+      width: 100%;
+      max-width: 1200px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .tableauContainer:hover {
+      transform: translateY(-5px);
+    }
+
+    #message {
+      font-size: 1.2rem;
+      color: #d9534f;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #1f77b4, #3ca0f0);
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.6rem; }
+      main { padding: 20px 10px; }
+      .tableauContainer { border-radius: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.4rem; }
+      header p { font-size: 0.9rem; }
+      #message { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Job Market Insights Dashboard</h1>
+    <p>Interactive African Job Market Analysis (Filtered)</p>
+  </header>
+
+  <main>
+    <div id="dashboard" class="tableauContainer">
+      <!-- Tableau Embedded Code -->
+      <div class='tableauPlaceholder' id='viz1759038886881' style='position: relative'>
+        <noscript>
+          <a href='#'>
+            <img alt='Job Market Insights: Map + Company Analysis' src='https://public.tableau.com/static/images/3J/3JHXHGTTC/1_rss.png' style='border: none' />
+          </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='path' value='shared/3JHXHGTTC' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image' value='https://public.tableau.com/static/images/3J/3JHXHGTTC/1.png' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en-US' />
+          <param name='filter' value='publish=yes' />
+        </object>
+      </div>
+    </div>
+
+    <p id="message">Dashboard is visible only between 3 PM and 5 PM IST.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Internship Project | Job Market Insights
+  </footer>
+
+  <script>
+    function checkTime() {
+      const now = new Date();
+      // IST conversion
+      let istHours = now.getUTCHours() + 5;
+      let istMinutes = now.getUTCMinutes() + 30;
+
+      if (istMinutes >= 60) {
+        istHours += 1;
+        istMinutes -= 60;
+      }
+
+      if (istHours >= 24) istHours -= 24;
+
+      const totalIST = istHours + istMinutes/60;
+
+      const dashboard = document.getElementById('dashboard');
+      const message = document.getElementById('message');
+
+      // Show dashboard only 3 PM - 5 PM IST
+      if (totalIST >= 15 && totalIST < 17) {
+        dashboard.style.display = 'block';
+        message.style.display = 'none';
+      } else {
+        dashboard.style.display = 'none';
+        message.style.display = 'block';
+      }
+    }
+
+    // Initial check + check every minute
+    checkTime();
+    setInterval(checkTime, 60000);
+  </script>
+
+</body>
+</html>

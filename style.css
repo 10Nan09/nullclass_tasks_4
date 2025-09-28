@@ -1,0 +1,88 @@
+/* Reset & base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #1f77b4, #3ca0f0);
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #e0e0e0;
+}
+
+/* Main content */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Tableau container */
+.tableauContainer {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+}
+
+.tableauContainer:hover {
+  transform: translateY(-5px);
+}
+
+/* Hidden message */
+#message {
+  font-size: 1.2rem;
+  color: #d9534f;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #1f77b4, #3ca0f0);
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header h1 { font-size: 1.6rem; }
+  main { padding: 20px 10px; }
+  .tableauContainer { border-radius: 8px; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.4rem; }
+  header p { font-size: 0.9rem; }
+  #mes
